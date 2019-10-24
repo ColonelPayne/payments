@@ -32,3 +32,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 Проект использует для обмена данными открытый BAAS Firebase с Cloud Firestore в роли хранилища данных.
 В проекте имеются абстрактные классы для работы с любыми другими внешними API, может использовать Data transfer object для обмена данными.
+
+Учетные записи для тестирования
+timezero999@gmail.com
+123890123
+
+testtest@gmail.com
+123890
+
