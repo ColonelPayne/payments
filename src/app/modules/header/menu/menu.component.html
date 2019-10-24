@@ -1,0 +1,13 @@
+<mat-toolbar color="grey" class="toolbar">
+  <nav class="docs-navbar-header">
+    <a mat-button class="docs-button" [routerLink]="['/payments']" aria-label="Список платежей">
+      <span>Список платежей</span>
+    </a>
+    <a mat-button class="docs-button" [routerLink]="['/create']" aria-label="Создать платеж">
+      <span>Создать платеж</span>
+    </a>
+    <a mat-button class="docs-button" href="#" (click)="signOut()" aria-label="Выход">
+      <span>Выход</span>
+    </a>
+  </nav>
+</mat-toolbar>

@@ -1,0 +1,52 @@
+<mat-card>
+  <mat-card-title>Список платежей</mat-card-title>
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Поиск">
+  </mat-form-field>
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Имя </th>
+      <td mat-cell *matCellDef="let element"> <a [routerLink]="['/payment/' + element.id]">{{element.name}}</a> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="summ">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Сумма </th>
+      <td mat-cell *matCellDef="let element"> {{element.summ}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Дата отправки </th>
+      <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Статус </th>
+      <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="bank">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Банк </th>
+      <td mat-cell *matCellDef="let element"> {{element.bank}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="bik">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> БИК </th>
+      <td mat-cell *matCellDef="let element"> {{element.bik}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="rs">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Расчетный счет </th>
+      <td mat-cell *matCellDef="let element"> {{element.rs}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="comment">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Комментарий </th>
+      <td mat-cell *matCellDef="let element"> {{element.comment}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+</mat-card>

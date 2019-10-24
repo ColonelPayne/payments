@@ -1,0 +1,15 @@
+<mat-card>
+  <mat-card-title>Вход</mat-card-title>
+
+
+  <form [formGroup]="loginForm">
+    <mat-form-field class="example-full-width">
+      <input type="text" class="form-control" id="email" formControlName="email" matInput placeholder="E-Mail">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input type="text" class="form-control" id="password" formControlName="password" matInput placeholder="Пароль">
+    </mat-form-field>
+    <button mat-button type="submit" (click)="login()" class="btn btn-default">Войти</button>
+  </form>
+</mat-card>
+

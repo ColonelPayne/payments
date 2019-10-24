@@ -1,0 +1,8 @@
+.toolbar p {
+  margin: 0px 30px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  text-align: center;
+  align-items: center;
+}

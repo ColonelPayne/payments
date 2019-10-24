@@ -1,0 +1,15 @@
+mat-card {
+  width: 500px;
+  margin: 20px;
+}
+.item-payment {
+  justify-content: space-between;
+  display: flex;
+  width: 100%;
+}
+mat-list-item span {
+  font-size: 12px;
+}
+mat-list-item .right {
+  font-size: 16px;
+}

@@ -1,0 +1,63 @@
+<mat-card>
+  <mat-card-title>Создать платеж</mat-card-title>
+    <form class="example-form" [formGroup]="paymentForm">
+      <mat-form-field class="example-full-width">
+        <input type="text" class="form-control" id="name" formControlName="name" matInput placeholder="Наименование платежа">
+        <mat-error *ngIf="paymentForm.get('name').hasError('maxlength') && !paymentForm.hasError('required')">
+          Превышен лимит символов
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Выберите статус</mat-label>
+        <mat-select #fontSize value="16px" formControlName="status">
+          <mat-option [value]="status.title" *ngFor="let status of statuses">{{status.value}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input type="text" class="form-control" id="summ" formControlName="summ" matInput placeholder="Сумма">
+        <mat-error *ngIf="paymentForm.get('summ').hasError('pattern') && !paymentForm.hasError('required')">
+          Допустимы только цифры
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input type="text" class="form-control" id="bank" formControlName="bank" matInput placeholder="Банк">
+        <mat-error *ngIf="paymentForm.get('bank').hasError('maxlength') && !paymentForm.hasError('required')">
+          Превышен лимит символов
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input type="text" class="form-control" id="bik" formControlName="bik" matInput placeholder="БИК">
+        <mat-error *ngIf="(paymentForm.get('bik').hasError('minlength') || paymentForm.get('bik').hasError('maxlength')) && !paymentForm.hasError('required')">
+          БИК должен содержать 9 цифр
+        </mat-error>
+        <mat-error *ngIf="paymentForm.get('bik').hasError('pattern') && !paymentForm.hasError('required')">
+          БИК должен состоять из цифр
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input type="text" class="form-control" id="rs" formControlName="rs" matInput placeholder="Расчетный счет">
+        <mat-error *ngIf="(paymentForm.get('rs').hasError('minlength') || paymentForm.get('rs').hasError('maxlength')) && !paymentForm.hasError('required')">
+          РС должен содержать 20 цифр
+        </mat-error>
+        <mat-error *ngIf="paymentForm.get('rs').hasError('pattern') && !paymentForm.hasError('required')">
+          РС должен состоять из цифр
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Комментарий</mat-label>
+        <textarea matInput
+                  formControlName="comment"></textarea>
+        <mat-error *ngIf="paymentForm.get('comment').hasError('maxlength') && !paymentForm.hasError('required')">
+          Превышен лимит символов
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-button type="button" (click)="createPayment()" [disabled]="!paymentForm.valid">Создать платеж</button>
+    </form>
+</mat-card>
