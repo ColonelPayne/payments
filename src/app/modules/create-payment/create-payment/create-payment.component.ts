@@ -34,21 +34,17 @@ export class CreatePaymentComponent implements OnInit {
   }
 
   private initForm() {
-    const payment: { [key: string]: FormControl } = {
+    const formGroup: { [key: string]: FormControl } = {
       name: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       comment: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       date: new FormControl(moment().format('DD.MM.YYYY : hh:mm')),
       status: new FormControl('', [Validators.required]),
-      summ: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")])
-    };
-
-    const billing: { [key: string]: FormControl } = {
+      summ: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
       bank: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-      bik: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(9), Validators.maxLength(9)]),
-      rs: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(20), Validators.maxLength(20)])
+      bik: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(9), Validators.maxLength(9)]),
+      rs: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(20), Validators.maxLength(20)])
     };
 
-    const formGroup: { [key: string]: FormControl } = Object.assign({}, payment, billing);
     this.paymentForm = new FormGroup(formGroup);
   }
 
@@ -75,7 +71,7 @@ export class CreatePaymentComponent implements OnInit {
         }
       );
     } else {
-      alert("Недостаточно средств на счету");
+      alert('Недостаточно средств на счету');
     }
 
   }

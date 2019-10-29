@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {UserServerService} from './core/services/userServer.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,11 @@ import {UserServerService} from './core/services/userServer.service';
 export class AppComponent {
   title = 'test-money';
   isLoggedIn: boolean;
-  constructor(public authService: UserServerService)
+  constructor(public authService: UserServerService,
+              private router: Router)
   {
-    this.isLoggedIn = authService.isLoggedIn;
+    router.events.subscribe((val) => {
+      this.isLoggedIn = authService.isLoggedIn;
+    });
   }
 }

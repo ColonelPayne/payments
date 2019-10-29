@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {PaymentServerService} from '../../../core/services/paymentServer.service';
-import {IUser} from '../../../core/models/IUser';
 import {Payment} from '../../../core/models/Payment';
-import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-payment-page',
@@ -12,22 +10,20 @@ import {map} from 'rxjs/operators';
 })
 export class PaymentPageComponent implements OnInit {
 
-  pageId: string;
-  payment: Payment;
-  payments: Payment[];
+  payment: Payment = new Payment();
 
   constructor(private activatedRoute: ActivatedRoute,
-              private paymentService: PaymentServerService ) {
-    activatedRoute.params.subscribe(params => {
-      this.pageId = params['id'];
-    });
-  }
+              private paymentService: PaymentServerService ) {}
 
   ngOnInit() {
-    this.paymentService.getPaymentById(this.pageId)
-      .subscribe(data => {
-        this.payment = data.payload.data() as Payment;
-      });
+    this.activatedRoute.params.pipe(
+    ).subscribe(params => {
+      const pageId = params.id;
+      this.paymentService.getPaymentById(pageId)
+        .subscribe(data => {
+          Object.assign(this.payment, data.payload.data());
+        });
+    });
   }
 
 }

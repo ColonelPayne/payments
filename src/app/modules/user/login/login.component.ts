@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  public isLoggedIn: boolean;
   public loginForm: FormGroup;
 
   constructor(private service: UserServerService,
@@ -32,8 +33,7 @@ export class LoginComponent implements OnInit {
     this.service.SignIn(this.loginForm.value.email, this.loginForm.value.password)
       .then((result) => {
         this.ngZone.run(() => {
-          location.href="/payments";
-          // this.router.navigate(['/payments']);
+          this.router.navigate(['/payments']);
         });
       }).catch((error) => {
       window.alert(error.message);

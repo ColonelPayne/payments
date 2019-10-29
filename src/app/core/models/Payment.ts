@@ -14,6 +14,10 @@ export class Payment extends AbstractOriginal<PaymentDTO> {
   public bik: number;
   public rs: number;
 
+  constructor() {
+    super();
+  }
+
   public toDto(): PaymentDTO {
     const res = new PaymentDTO();
 
